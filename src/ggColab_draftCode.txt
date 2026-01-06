@@ -1,0 +1,47 @@
+adata = dgc.B
+
+X = adata.layers["sum"] if "sum" in adata.layers else adata.X
+X = X.toarray() if hasattr(X, "toarray") else np.asarray(X)
+
+plt.figure(figsize=(10, 8))
+plt.imshow(X, aspect="auto", interpolation="nearest")
+plt.xlabel("TFs (vars)")
+plt.ylabel("Cells / obs")
+plt.title("Heatmap of adata matrix")
+plt.colorbar(label="value")
+plt.show()
+
+# =============================================
+""" Log plot """
+
+X_plot = np.log1p(X)
+
+plt.figure(figsize=(10, 6))
+plt.imshow(X_plot, aspect="auto", interpolation="nearest")
+plt.colorbar(label="log(1 + value)")
+plt.xlabel("TFs")
+plt.ylabel("Observations")
+plt.title("Heatmap (log-scaled)")
+
+plt.show()
+
+
+# =============================================
+""" High resolution time series, quite heavy, not really needed right now"""
+# adata = ad.read_h5ad(os.path.join(PROJECT_DIR, "MPC for cell reprogramming/pseudotime.h5ad"))
+# adata.obs['dpt_pseudotime']
+# adata.layers['log_norm']
+
+
+
+
+# ================================
+
+# print(dgc.B.obs['TAD'])
+# print(dgc.B)
+# print(dgc.A.shape)
+# print(dgc.B)
+# print(candidate_tfs)
+# print(args.target_expression)
+# print(target)
+# print(len(recipe_list))
