@@ -57,7 +57,7 @@ def preprocess_data(
     """
 
     # load in steady-state value, ($\\bar{x}$ in the paper)
-    steady_state = sc.read_h5ad('data/raw/fibroblast_ss.h5ad')
+    steady_state = sc.read_h5ad('data/fibroblast_ss.h5ad')
 
     # Set microRNA genes to zero
     gene_idx_to_zero = np.arange(11165, 12324)
@@ -121,8 +121,8 @@ class DGC:
         Entry b_ij = 1 if TF j can influence gene i (based on data from either HuRI or STRING). Otherwise b_ij = 0. 
         """
 
-        self.B = sc.read_h5ad('data/raw/B_matrix_2015.h5ad')
-        gene_access = pd.read_csv('data/raw/gene_accessibility.csv', index_col=0)
+        self.B = sc.read_h5ad('data/B_matrix_2015.h5ad')
+        gene_access = pd.read_csv('data/gene_accessibility.csv', index_col=0)
 
         # subset to genes in B matrix with same order
         mask = (gene_access.loc[self.B.obs_names]).values
