@@ -206,3 +206,8 @@ def print_scores(
     print("-" * (max_recipe_len + 3 + 10))
     for recipe, score in sorted_scores.items():
         print(f"{recipe:<{max_recipe_len}}  | {score:>8.2f}")
+
+
+
+def thinh_print():
+    print("do huu thinh")
